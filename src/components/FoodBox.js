@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function FoodBox(props) {
 
-  const [count, setCount] = useState(()=> 1)
+  const [count, setCount] = useState(1)
 
   const handleChange = e => {
     setCount(e.target.value)

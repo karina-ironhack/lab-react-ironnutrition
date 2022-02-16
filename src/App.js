@@ -11,6 +11,7 @@ function App() {
 
   const [foodList, setFoodList] = useState(foods)
   const [totalCalories, setTotalCalories] = useState(0)
+  const [filteredFood, setFilteredFood] = useState(foodList)
   const [todaysFoodArr, setTodaysFoodArr] = useState([])
 
   const addNewFood = (newFood) => {
@@ -20,7 +21,7 @@ function App() {
 
   const search = (input) => {
     const filteredFoodArray = foodList.filter(elm => elm.name.toLowerCase().includes(input.toLowerCase()));
-    setFoodList(filteredFoodArray);
+    setFilteredFood(filteredFoodArray);
   }
 
   const addTodaysFood = (quantity) => {
@@ -35,7 +36,7 @@ function App() {
       <div>
       <div className="columns">
         <div className="column">
-          {foodList.map((item) => {
+          {filteredFood.map((item) => {
             return <FoodBox key={item.name} item={item} />;
           })}
         </div>

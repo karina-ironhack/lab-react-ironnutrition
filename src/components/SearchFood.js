@@ -6,7 +6,7 @@ function SearchFood(props) {
 
     const handleSearch = (e) => {
         props.search(e.target.value)
-        setSearchInput(e.target.value)
+        setSearchInput(e.target.value)  
     }
 
     return (

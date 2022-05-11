@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 
 function FoodBox(props) {
 
-  const [count, setCount] = useState(1)
-
+  const [quantity, setQuantity] = useState(props.item.quantity)
   const handleChange = e => {
-    setCount(e.target.value)
+    setQuantity(Number(e.target.value));
+    console.log('quant', quantity)
+    props.updateFoodItem(props.item.name, quantity);
   }
 
   return (
@@ -27,10 +28,15 @@ function FoodBox(props) {
         <div className="media-right">
           <div className="field has-addons">
             <div className="control">
-              <input className="input" type="number" value={count}  onChange={handleChange}/>
+              <input className="input" type="number" value={quantity}  
+              onChange={e => handleChange(e)}/>
             </div>
             <div className="control">
-              <button className="button is-info" onClick={() => props.handleTotal(count)}>+</button>
+              <button className="button is-info" onClick={
+                (e)=> {
+                  props.addTodaysFood(props.item)
+                }
+                }>+</button>
             </div>
           </div>
         </div>
